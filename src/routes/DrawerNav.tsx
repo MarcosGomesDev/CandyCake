@@ -6,7 +6,7 @@ import Colors from '../styles/Colors';
 
 const Drawer = createDrawerNavigator();
 
-const MyDrawer = () => {
+const MyDrawer: React.FC = () => {
     return (
         <Drawer.Navigator
             screenOptions={{

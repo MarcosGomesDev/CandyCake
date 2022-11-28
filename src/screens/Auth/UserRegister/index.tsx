@@ -1,23 +1,23 @@
 
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, ScrollView, ActivityIndicator, } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, ScrollView, ActivityIndicator, } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { showToast } from '../../../store/modules/toast/actions'
 import { useDispatch } from 'react-redux'
+import { isValidEmail } from '../../../utils/validators'
+// import {api} from '../../../services/api'
 
 import Colors from '../../../styles/Colors'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import Input, { InputHandler } from '../../../components/Input';
 
-// import {api} from '../../../services/api'
-import { isValidEmail } from '../../../utils/validators'
-import { useNavigation } from '@react-navigation/native';
-import { BackButton, Container, Form, Header } from './styles';
+import Input, { InputHandler } from '../../../components/Input';
 import StatusBarCustom from '../../../components/StatusBarCustom';
 import Text from '../../../components/Text';
 import Button from '../../../components/Button';
-import { useRef } from 'react';
+
+import { BackButton, Container, Form, Header } from './styles';
 
 const UserRegister: React.FC = () => {
     const dispatch = useDispatch()

@@ -12,7 +12,7 @@ const GoBackBtn: React.FC = () => {
         <Button
             onPress={() => navigation.goBack()}
         >
-            <CaretLeft size={32} color={Colors.primary} />
+            <CaretLeft size={26} color={Colors.primary} />
         </Button>
     );
 }
