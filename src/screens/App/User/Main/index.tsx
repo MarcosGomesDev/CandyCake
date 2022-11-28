@@ -12,6 +12,7 @@ const Main: React.FC = () => {
         <Container>
             <StatusBarCustom
                 backgroundColor='#fff'
+                barStyle='dark-content'
             />
             <Header
                 showOptions

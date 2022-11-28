@@ -6,7 +6,8 @@ export const Container = styled.View.attrs({
     borderBottomColor: Colors.primary
 })`
     background: ${Colors.white};
-    max-height: 50px;
+    max-height: 65px;
+    padding: 25px 0;
     justify-content: space-between;
     align-items: center;
     elevation: 2;
@@ -24,8 +25,8 @@ export const OptionsContainer = styled.View`
 export const Button = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     background: #f0f0f0;
     border-radius: 20px;
     margin: 0px 5px;
