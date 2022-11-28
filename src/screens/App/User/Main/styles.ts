@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
 
-export const Title = styled.Text`
-  color: #ff0022
+export const Container = styled.View`
+    flex: 1;
 `;
