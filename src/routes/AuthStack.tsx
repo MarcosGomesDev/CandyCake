@@ -7,6 +7,7 @@ import LoginUser from '../screens/Auth/LoginUser';
 import SellerRegister from '../screens/Auth/SellerRegister';
 import AddressInfo from '../screens/Auth/SellerRegister/AddressInfo';
 import EmailInfo from '../screens/Auth/SellerRegister/EmailInfo';
+import VerifyTokenUser from '../screens/Auth/VerifyTokenUser';
 
 const Stack = createNativeStackNavigator()
 
@@ -21,6 +22,7 @@ const AuthStack: React.FC = () => {
             <Stack.Screen name="SellerRegister" component={SellerRegister} />
             <Stack.Screen name="AddressInfo" component={AddressInfo} />
             <Stack.Screen name="EmailInfo" component={EmailInfo} />
+            <Stack.Screen name="VerifyTokenUser" component={VerifyTokenUser} />
         </Stack.Navigator>
     )
 }

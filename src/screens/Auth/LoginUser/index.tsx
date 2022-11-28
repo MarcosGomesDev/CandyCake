@@ -124,7 +124,9 @@ const LoginUser: React.FC = () => {
                             secureEntry
                         />
 
-                        <ButtonOut>
+                        <ButtonOut
+                            onPress={() => navigation.navigate('VerifyTokenUser')}
+                        >
                             <Text
                                 size={14}
                                 color={Colors.primary}

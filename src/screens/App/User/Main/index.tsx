@@ -1,6 +1,8 @@
 import React from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView } from 'react-native';
+
 import Header from '../../../../components/Header';
+import ProductList from '../../../../components/ProductList';
 import StatusBarCustom from '../../../../components/StatusBarCustom';
 
 import { Container } from './styles';
@@ -14,6 +16,12 @@ const Main: React.FC = () => {
             <Header
                 showOptions
             />
+
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+            >
+                <ProductList />
+            </ScrollView>
         </Container>
     );
 }

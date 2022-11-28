@@ -10,7 +10,8 @@ export declare global {
             SellerRegister: undefined,
             AddressInfo: undefined,
             EmailInfo: undefined,
-            Help: undefined
+            Help: undefined,
+            VerifyTokenUser: undefined,
         }
     }
 }

@@ -8,6 +8,7 @@ import ProductListItem from './ProductListItem';
 import {api} from '../../services/api'
 import { widthPercent } from '../../utils/dimensions';
 import { useQuery } from '@tanstack/react-query';
+import { Container } from './styles';
 
 const ProductList = () => {
     const navigation = useNavigation()
@@ -23,15 +24,15 @@ const ProductList = () => {
                     <ActivityIndicator size="large" color={Colors.primary} />
                 </View>
             )}
-            <View style={styles.container}>
-                {data?.map((item) => (
+            <Container>
+                {data?.map((item: any) => (
                     <ProductListItem
                         data={item}
                         key={item._id}
-                        onPress={() => navigation.navigate('ProductItem', item._id)}
+                        onPress={() => navigation.navigate<any>('ProductItem', item._id)}
                     />
                 ))}
-            </View>
+            </Container>
         </>
     )
 }
