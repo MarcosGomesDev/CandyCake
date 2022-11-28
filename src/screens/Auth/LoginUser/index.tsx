@@ -101,7 +101,6 @@ const LoginUser: React.FC = () => {
                             Login
                         </Text>
 
-
                         <Input
                             ref={emailInput}
                             showTitle

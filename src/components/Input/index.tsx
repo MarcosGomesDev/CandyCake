@@ -71,6 +71,7 @@ const Input = forwardRef<InputHandler, InputProps>(({
                 <Icon name={iconName} size={24} color={error ? Colors.danger : Colors.primary} />
                 <InputText
                     placeholder={placeholder}
+                    placeholderTextColor={"#a9a9a9"}
                     autoCapitalize={'none'}
                     secureTextEntry={changeSecureEntry}
                     {...rest}

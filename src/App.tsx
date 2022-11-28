@@ -17,9 +17,9 @@ const App: React.FC = () => {
             <AuthProvider>
                 <Provider store={store}>
                     <StatusBar
-                        barStyle={'default'}
+                        barStyle={'light-content'}
                         backgroundColor={'#fff'}
-                        translucent
+                        translucent={true}
                     />
                     <Toast />
                     <Router />

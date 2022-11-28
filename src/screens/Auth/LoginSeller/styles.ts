@@ -23,7 +23,7 @@ export const Form = styled.View`
 `;
 
 export const ButtonOut = styled.TouchableOpacity`
-    margin: 0px 0 25px 0;
+    margin: 0px 0 40px 0;
     align-self: flex-end;
     padding-right: 20px;
 `;
