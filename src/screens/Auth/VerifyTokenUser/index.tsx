@@ -9,10 +9,11 @@ import { api } from '../../../services/api';
 import Colors from '../../../styles/Colors';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { heightPercent } from '../../../utils/dimensions';
-import { Button, Container, Content, Footer, FooterContent, Input, InputContainer } from './styles';
+import { Button, Content, Footer, FooterContent, Input, InputContainer } from './styles';
 import Text from '../../../components/Text';
 import StatusBarCustom from '../../../components/StatusBarCustom';
 import Header from '../../../components/Header';
+import Container from '../../../components/Container';
 
 const VerifyTokenUser = ({ route }: any) => {
     let email = route.params
@@ -99,109 +100,103 @@ const VerifyTokenUser = ({ route }: any) => {
 
     return (
         <Container>
-            <StatusBarCustom
-                backgroundColor='#fff'
-                barStyle='dark-content'
+            <Header
+                goBack
             />
-            <Container>
-                <Header
-                    goBack
-                />
-                <Text
-                    color={Colors.primary}
-                    style={{ marginTop: heightPercent('20%'), marginBottom: 80 }}
-                >
-                    Insira o código enviado para o seu email.
-                </Text>
-                <Content>
-                    <InputContainer>
-                        <Input
-                            keyboardType='numeric'
-                            ref={firstInput}
-                            maxLength={1}
-                            onChangeText={text => {
-                                setFirst(text)
-                                text && secondInput.current?.focus()
-                            }}
-                        />
-                    </InputContainer>
-                    <InputContainer>
-                        <Input
-                            keyboardType='numeric'
-                            ref={secondInput}
-                            maxLength={1}
-                            onChangeText={text => {
-                                setSecond(text)
-                                text ? thirdInput.current?.focus() : firstInput.current?.focus();
-                            }}
-                        />
-                    </InputContainer>
-                    <InputContainer>
-                        <Input
-                            keyboardType='numeric'
-                            ref={thirdInput}
-                            maxLength={1}
-                            onChangeText={text => {
-                                setThird(text)
-                                text ? fourthInput.current?.focus() : secondInput.current?.focus();
-                            }}
-                        />
-                    </InputContainer>
-                    <InputContainer>
-                        <Input
-                            keyboardType='numeric'
-                            ref={fourthInput}
-                            maxLength={1}
-                            onChangeText={text => {
-                                setFourth(text)
-                                text ? fifthInput.current?.focus() : thirdInput.current?.focus();
-                            }}
-                        />
-                    </InputContainer>
-                    <InputContainer>
-                        <Input
-                            keyboardType='numeric'
-                            ref={fifthInput}
-                            maxLength={1}
-                            onChangeText={text => {
-                                setFifth(text)
-                                text ? sixthInput.current?.focus() : fourthInput.current?.focus();
-                            }}
-                        />
-                    </InputContainer>
-                    <InputContainer>
-                        <Input
-                            keyboardType='numeric'
-                            ref={sixthInput}
-                            maxLength={1}
-                            onChangeText={text => {
-                                setSixth(text)
-                                !text && fifthInput.current?.focus();
-                            }}
-                        />
-                    </InputContainer>
-                </Content>
+            <Text
+                color={Colors.primary}
+                style={{ marginTop: heightPercent('20%'), marginBottom: 80 }}
+            >
+                Insira o código enviado para o seu email.
+            </Text>
+            <Content>
+                <InputContainer>
+                    <Input
+                        keyboardType='numeric'
+                        ref={firstInput}
+                        maxLength={1}
+                        onChangeText={text => {
+                            setFirst(text)
+                            text && secondInput.current?.focus()
+                        }}
+                    />
+                </InputContainer>
+                <InputContainer>
+                    <Input
+                        keyboardType='numeric'
+                        ref={secondInput}
+                        maxLength={1}
+                        onChangeText={text => {
+                            setSecond(text)
+                            text ? thirdInput.current?.focus() : firstInput.current?.focus();
+                        }}
+                    />
+                </InputContainer>
+                <InputContainer>
+                    <Input
+                        keyboardType='numeric'
+                        ref={thirdInput}
+                        maxLength={1}
+                        onChangeText={text => {
+                            setThird(text)
+                            text ? fourthInput.current?.focus() : secondInput.current?.focus();
+                        }}
+                    />
+                </InputContainer>
+                <InputContainer>
+                    <Input
+                        keyboardType='numeric'
+                        ref={fourthInput}
+                        maxLength={1}
+                        onChangeText={text => {
+                            setFourth(text)
+                            text ? fifthInput.current?.focus() : thirdInput.current?.focus();
+                        }}
+                    />
+                </InputContainer>
+                <InputContainer>
+                    <Input
+                        keyboardType='numeric'
+                        ref={fifthInput}
+                        maxLength={1}
+                        onChangeText={text => {
+                            setFifth(text)
+                            text ? sixthInput.current?.focus() : fourthInput.current?.focus();
+                        }}
+                    />
+                </InputContainer>
+                <InputContainer>
+                    <Input
+                        keyboardType='numeric'
+                        ref={sixthInput}
+                        maxLength={1}
+                        onChangeText={text => {
+                            setSixth(text)
+                            !text && fifthInput.current?.focus();
+                        }}
+                    />
+                </InputContainer>
+            </Content>
 
-                <Footer>
-                    <FooterContent>
-                        <Button onPress={sendToken}>
-                            <Text
-                                color={Colors.primary}
-                                weight={700}
-                            >
-                                Enviar
-                            </Text>
-                        </Button>
-                        <Button onPress={onResendOTP}>
-                            <Text
-                                color={enableResend ? Colors.primary : 'gray'}
-                            >
-                                Reenviar código ({countDown})
-                            </Text>
-                        </Button>
-                    </FooterContent>
-                </Footer>
-            </Container>
+            <Footer>
+                <FooterContent>
+                    <Button onPress={sendToken}>
+                        <Text
+                            color={Colors.primary}
+                            weight={700}
+                        >
+                            Enviar
+                        </Text>
+                    </Button>
+                    <Button onPress={onResendOTP}>
+                        <Text
+                            color={enableResend ? Colors.primary : 'gray'}
+                        >
+                            Reenviar código ({countDown})
+                        </Text>
+                    </Button>
+                </FooterContent>
+            </Footer>
         </Container>
     );
 };

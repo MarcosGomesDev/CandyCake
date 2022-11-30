@@ -17,10 +17,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from '../../../styles/Colors';
 import { isValidEmail } from '../../../utils/validators';
 import { useNavigation } from '@react-navigation/native';
-import { BackButton, Container, Form, Header } from './styles';
-import StatusBarCustom from '../../../components/StatusBarCustom';
+import { BackButton, Form, Header } from './styles';
 import Text from '../../../components/Text';
 import Button from '../../../components/Button';
+import Container from '../../../components/Container';
 
 // import { api } from '../../../services/api';
 
@@ -111,10 +111,6 @@ const EmailInfo: React.FC = ({ route }: any) => {
 
     return (
         <Container>
-            <StatusBarCustom
-                barStyle='light-content'
-                backgroundColor={Colors.secondary}
-            />
             <Header>
                 <BackButton
                     onPress={() => navigation.goBack()}

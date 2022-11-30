@@ -1,15 +1,16 @@
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import styled from 'styled-components/native';
-import { Animated } from 'react-native';
+import { Animated, TouchableWithoutFeedback } from 'react-native';
 import { heightPercent } from '../../utils/dimensions';
 
-export const Container = styled.View`
-    elevation: 100;
-    z-index: 100;
-`;
+export const Container = styled.View.attrs({
+    elevation: 100,
+    zIndex: 100,
+})``;
 
-export const Button = styled.TouchableWithoutFeedback`
 
+export const Button = styled(TouchableWithoutFeedback)`
+    /* padding-top: ${getStatusBarHeight() + heightPercent(6)}px; */
 `;
 
 export const ToastContainer = styled(Animated.View)`
@@ -18,7 +19,7 @@ export const ToastContainer = styled(Animated.View)`
     padding: 0 7px 20px;
     padding-top: ${getStatusBarHeight() + heightPercent(6)}px;
     align-self: center;
-    justifyContent: center;
+    justify-content: center;
 `;
 
 export const MessageContainer = styled.View`

@@ -7,6 +7,7 @@ import store from './store';
 import Router from './routes/Router';
 import { AuthProvider } from './context/Auth';
 import Toast from './components/Toast';
+import Test from './screens/Auth/Test';
 
 const queryClient = new QueryClient()
 
@@ -16,16 +17,11 @@ const App: React.FC = () => {
         <QueryClientProvider client={queryClient}>
             <AuthProvider>
                 <Provider store={store}>
-                    <StatusBar
-                        barStyle={'light-content'}
-                        backgroundColor={'#fff'}
-                        translucent={true}
-                    />
-                    <Toast />
                     <Router />
                 </Provider>
             </AuthProvider>
         </QueryClientProvider>
+        
     );
 }
 

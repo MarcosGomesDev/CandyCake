@@ -1,8 +1,10 @@
+import { Platform, StatusBar } from 'react-native';
 import styled from 'styled-components/native';
 import Colors from '../../../styles/Colors';
 import { heightPercent } from '../../../utils/dimensions';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
+    /* margin-top: ${Platform.OS === 'ios' ? '0px' : StatusBar.currentHeight}px; */
     flex: 1;
     width: 100%;
     background: #fff;

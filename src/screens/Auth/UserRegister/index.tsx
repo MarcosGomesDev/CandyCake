@@ -17,7 +17,8 @@ import StatusBarCustom from '../../../components/StatusBarCustom';
 import Text from '../../../components/Text';
 import Button from '../../../components/Button';
 
-import { BackButton, Container, Form, Header } from './styles';
+import { BackButton, Form, Header } from './styles';
+import Container from '../../../components/Container';
 
 const UserRegister: React.FC = () => {
     const dispatch = useDispatch()
@@ -112,10 +113,6 @@ const UserRegister: React.FC = () => {
 
     return (
         <Container>
-            <StatusBarCustom
-                barStyle='light-content'
-                backgroundColor={Colors.secondary}
-            />
             <Header>
                 <BackButton
                     onPress={() => navigation.goBack()}

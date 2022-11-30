@@ -10,11 +10,12 @@ import Input, { InputHandler } from '../../../components/Input';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Colors from '../../../styles/Colors';
 import { useNavigation } from '@react-navigation/native';
-import { BackButton, Container, Form, Header } from './styles';
+import { BackButton, Form, Header } from './styles';
 import Button from '../../../components/Button';
 import Text from '../../../components/Text';
 import StatusBarCustom from '../../../components/StatusBarCustom';
 import { formatCPF } from '../../../utils/formatCPF';
+import Container from '../../../components/Container';
 // import { isValidCpf } from '../../../utils/validators';
 
 // create a component
@@ -181,10 +182,6 @@ const SellerRegister: React.FC = () => {
 
     return (
         <Container>
-            <StatusBarCustom
-                barStyle='light-content'
-                backgroundColor={Colors.secondary}
-            />
             <Header>
                 <BackButton
                     onPress={() => navigation.goBack()}
@@ -215,7 +212,9 @@ const SellerRegister: React.FC = () => {
             <KeyboardAwareScrollView
                 extraScrollHeight={180}
             >
-                <ScrollView>
+                <ScrollView
+                    showsVerticalScrollIndicator={false}
+                >
                     <Form>
                         <Text
                             color={Colors.primary}

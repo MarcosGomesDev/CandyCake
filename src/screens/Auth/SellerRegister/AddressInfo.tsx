@@ -1,5 +1,5 @@
-import React, { useEffect, useState, createRef, useRef } from 'react';
-import { View, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import React, { useEffect, useState, useRef } from 'react';
+import { View, ActivityIndicator } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { showToast } from '../../../store/modules/toast/actions'
@@ -8,11 +8,11 @@ import Input, { InputHandler } from '../../../components/Input'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import Colors from '../../../styles/Colors'
 import { useNavigation } from '@react-navigation/native';
-import { BackButton, Container, Form, Header } from './styles';
-import StatusBarCustom from '../../../components/StatusBarCustom';
+import { BackButton, Form, Header } from './styles';
 import Text from '../../../components/Text';
 import Button from '../../../components/Button';
 import { formatCEP } from '../../../utils/formatCEP';
+import Container from '../../../components/Container';
 
 const AddressInfo: React.FC = ({ route }: any) => {
     let item = route.params
@@ -116,10 +116,6 @@ const AddressInfo: React.FC = ({ route }: any) => {
 
     return (
         <Container>
-            <StatusBarCustom
-                barStyle='light-content'
-                backgroundColor={Colors.secondary}
-            />
             <Header>
                 <BackButton
                     onPress={() => navigation.goBack()}

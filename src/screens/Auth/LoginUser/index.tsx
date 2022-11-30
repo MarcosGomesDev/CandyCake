@@ -3,15 +3,17 @@ import React, { createRef, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, ScrollView, StatusBar, TextInput, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import Button from '../../../components/Button';
+import Container from '../../../components/Container';
 import Input, { InputHandler } from '../../../components/Input';
 import StatusBarCustom from '../../../components/StatusBarCustom';
 import Text from '../../../components/Text';
+import Toast from '../../../components/Toast';
 import { useAuth } from '../../../context/Auth';
 import { showToast } from '../../../store/modules/toast/actions';
 import Colors from '../../../styles/Colors';
 import { storeData, UserProps } from '../../../utils/storage';
 
-import { ButtonOut, Container, Form, Header } from './styles';
+import { ButtonOut, Form, Header } from './styles';
 
 const LoginUser: React.FC = () => {
     const { setAuth } = useAuth()
@@ -56,7 +58,7 @@ const LoginUser: React.FC = () => {
                 setLoading(false)
                 setAuth(auth)
             }, 3000);
-            
+
         } catch (error) {
             setLoading(false)
             Alert.alert('credenciais inválidas')
@@ -65,120 +67,114 @@ const LoginUser: React.FC = () => {
 
     return (
         <Container>
-            <StatusBarCustom
-                barStyle='light-content'
-                backgroundColor={Colors.secondary}
-            />
-            <Container>
-                <Header>
-                    <View style={{ marginBottom: 40 }}>
-                        <Text
-                            style={{ paddingLeft: 20 }}
-                            weight={700}
-                            size={26}
-                            color={Colors.primary}
-                            align="left"
-                        >
-                            Olá,
-                        </Text>
-                        <Text
-                            style={{ paddingLeft: 20 }}
-                            weight={700}
-                            size={26}
-                            color={Colors.primary}
-                            align="left"
-                        >
-                            Bem-vindo de volta!
-                        </Text>
-                    </View>
-                </Header>
+            <Header>
+                <View style={{ marginBottom: 40 }}>
+                    <Text
+                        style={{ paddingLeft: 20 }}
+                        weight={700}
+                        size={26}
+                        color={Colors.primary}
+                        align="left"
+                    >
+                        Olá,
+                    </Text>
+                    <Text
+                        style={{ paddingLeft: 20 }}
+                        weight={700}
+                        size={26}
+                        color={Colors.primary}
+                        align="left"
+                    >
+                        Bem-vindo de volta!
+                    </Text>
+                </View>
+            </Header>
 
-                <ScrollView>
-                    <Form>
+            <ScrollView>
+                <Form>
+                    <Text
+                        color={Colors.primary}
+                        weight={600}
+                        size={24}
+                        align="left"
+                        style={{ paddingLeft: 20, marginBottom: 30 }}
+                    >
+                        Login
+                    </Text>
+
+                    <Input
+                        ref={emailInput}
+                        showTitle
+                        title='E-mail'
+                        iconName='email'
+                        placeholder='exemplo@exemplo.com'
+                        value={email}
+                        onChangeText={setEmail}
+                        autoCorrect={false}
+                    />
+                    <Input
+                        showTitle
+                        title='Senha'
+                        iconName='lock'
+                        placeholder='********'
+                        value={password}
+                        onChangeText={setPassword}
+                        autoCorrect={false}
+                        secure
+                        secureEntry
+                    />
+
+                    <ButtonOut
+                        onPress={() => navigation.navigate('VerifyTokenUser')}
+                    >
                         <Text
+                            size={14}
                             color={Colors.primary}
-                            weight={600}
-                            size={24}
-                            align="left"
-                            style={{ paddingLeft: 20, marginBottom: 30 }}
                         >
-                            Login
+                            Esqueceu a senha?
                         </Text>
+                    </ButtonOut>
 
-                        <Input
-                            ref={emailInput}
-                            showTitle
-                            title='E-mail'
-                            iconName='email'
-                            placeholder='exemplo@exemplo.com'
-                            value={email}
-                            onChangeText={setEmail}
-                            autoCorrect={false}
-                        />
-                        <Input
-                            showTitle
-                            title='Senha'
-                            iconName='lock'
-                            placeholder='********'
-                            value={password}
-                            onChangeText={setPassword}
-                            autoCorrect={false}
-                            secure
-                            secureEntry
-                        />
-
-                        <ButtonOut
-                            onPress={() => navigation.navigate('VerifyTokenUser')}
-                        >
+                    <Button
+                        onPress={() => signIn(email, password)}
+                        disabled={loading}
+                    >
+                        {loading ? (
+                            <ActivityIndicator size={'small'} color={Colors.white} />
+                        ) : (
                             <Text
-                                size={14}
-                                color={Colors.primary}
+                                color={Colors.white}
+                                size={18}
+                                weight={700}
                             >
-                                Esqueceu a senha?
+                                Entrar
                             </Text>
-                        </ButtonOut>
-
-                        <Button
-                            onPress={() => signIn(email, password)}
-                            disabled={loading}
-                        >
-                            {loading ? (
-                                <ActivityIndicator size={'small'} color={Colors.white} />
-                            ) : (
-                                <Text
-                                    color={Colors.white}
-                                    size={18}
-                                    weight={700}
-                                >
-                                    Entrar
-                                </Text>
-                            )}
-                        </Button>
-                    </Form>
-                    <ButtonOut
-                        style={{ alignSelf: 'center' }}
-                        onPress={() => navigation.navigate('LoginSeller')}
+                        )}
+                    </Button>
+                </Form>
+                <ButtonOut
+                    style={{ alignSelf: 'center' }}
+                    onPress={() => navigation.navigate('LoginSeller')}
+                >
+                    <Text
+                        size={14}
+                        color={Colors.primary}
                     >
-                        <Text
-                            size={14}
-                            color={Colors.primary}
-                        >
-                            Entrar como vendedor
-                        </Text>
-                    </ButtonOut>
-                    <ButtonOut
-                        style={{ alignSelf: 'center' }}
-                        onPress={() => navigation.navigate('UserRegister')}
+                        Entrar como vendedor
+                    </Text>
+                </ButtonOut>
+                <ButtonOut
+                    style={{ alignSelf: 'center' }}
+                    onPress={() => navigation.navigate('UserRegister')}
+                >
+                    <Text
+                        size={14}
+                        color={Colors.primary}
                     >
-                        <Text
-                            size={14}
-                            color={Colors.primary}
-                        >
-                            Não possuí conta? Cadastre-se
-                        </Text>
-                    </ButtonOut>
-                </ScrollView>
-            </Container>
+                        Não possuí conta? Cadastre-se
+                    </Text>
+                </ButtonOut>
+            </ScrollView>
         </Container>
     );
 }

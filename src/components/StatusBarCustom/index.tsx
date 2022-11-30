@@ -17,7 +17,7 @@ const StatusBarCustom: React.FC<StatusBarProps> = ({backgroundColor, barStyle}) 
         >
             <StatusBar
                 backgroundColor={backgroundColor}
-                translucent={true}
+                // translucent={true}
                 barStyle={barStyle}
             />
         </View>

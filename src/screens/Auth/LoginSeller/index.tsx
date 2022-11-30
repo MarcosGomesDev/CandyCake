@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { ActivityIndicator, Alert, ScrollView, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import Button from '../../../components/Button';
+import Container from '../../../components/Container';
 import Input, { InputHandler } from '../../../components/Input';
 import StatusBarCustom from '../../../components/StatusBarCustom';
 import Text from '../../../components/Text';
@@ -13,7 +14,7 @@ import Colors from '../../../styles/Colors';
 import { storeData, UserProps } from '../../../utils/storage';
 import { isValidEmail } from '../../../utils/validators';
 
-import { ButtonOut, Container, Form, Header } from './styles';
+import { ButtonOut, Form, Header } from './styles';
 
 const LoginSeller: React.FC = () => {
     const { setAuth } = useAuth()
@@ -74,116 +75,110 @@ const LoginSeller: React.FC = () => {
 
     return (
         <Container>
-            <StatusBarCustom
-                barStyle='light-content'
-                backgroundColor={Colors.secondary}
-            />
-            <Container>
-                <Header>
-                    <View style={{ marginBottom: 40 }}>
+            <Header>
+                <View style={{ marginBottom: 40 }}>
+                    <Text
+                        style={{ paddingLeft: 20 }}
+                        weight={700}
+                        size={26}
+                        color={Colors.primary}
+                        align="left"
+                    >
+                        Olá,
+                    </Text>
+                    <Text
+                        style={{ paddingLeft: 20 }}
+                        weight={700}
+                        size={26}
+                        color={Colors.primary}
+                        align="left"
+                    >
+                        Bem-vindo de volta!
+                    </Text>
+                </View>
+            </Header>
+
+            <ScrollView>
+                <Form>
+                    <Text
+                        color={Colors.primary}
+                        weight={600}
+                        size={24}
+                        align="left"
+                        style={{ paddingLeft: 20, marginBottom: 30 }}
+                    >
+                        Login
+                    </Text>
+
+                    <Input
+                        showTitle
+                        title="E-mail"
+                        iconName='email'
+                        placeholder='exemplo@exemplo.com'
+                        value={email}
+                        onChangeText={setEmail}
+                    />
+
+                    <Input
+                        showTitle
+                        title="Senha"
+                        iconName='lock'
+                        placeholder='********'
+                        secure
+                        secureEntry
+                        value={password}
+                        onChangeText={setPassword}
+                    />
+
+                    <ButtonOut>
                         <Text
-                            style={{ paddingLeft: 20 }}
-                            weight={700}
-                            size={26}
+                            size={14}
                             color={Colors.primary}
-                            align="left"
                         >
-                            Olá,
+                            Esqueceu a senha?
                         </Text>
-                        <Text
-                            style={{ paddingLeft: 20 }}
-                            weight={700}
-                            size={26}
-                            color={Colors.primary}
-                            align="left"
-                        >
-                            Bem-vindo de volta!
-                        </Text>
-                    </View>
-                </Header>
+                    </ButtonOut>
 
-                <ScrollView>
-                    <Form>
-                        <Text
-                            color={Colors.primary}
-                            weight={600}
-                            size={24}
-                            align="left"
-                            style={{ paddingLeft: 20, marginBottom: 30 }}
-                        >
-                            Login
-                        </Text>
-
-                        <Input
-                            showTitle
-                            title="E-mail"
-                            iconName='email'
-                            placeholder='exemplo@exemplo.com'
-                            value={email}
-                            onChangeText={setEmail}
-                        />
-
-                        <Input
-                            showTitle
-                            title="Senha"
-                            iconName='lock'
-                            placeholder='********'
-                            secure
-                            secureEntry
-                            value={password}
-                            onChangeText={setPassword}
-                        />
-
-                        <ButtonOut>
+                    <Button
+                        onPress={() => signIn(email, password)}
+                        disabled={loading}
+                    >
+                        {loading ? (
+                            <ActivityIndicator size={'large'} color={Colors.white} />
+                        ) : (
                             <Text
-                                size={14}
-                                color={Colors.primary}
+                                color={Colors.white}
+                                size={18}
+                                weight={700}
                             >
-                                Esqueceu a senha?
+                                Entrar
                             </Text>
-                        </ButtonOut>
-
-                        <Button
-                            onPress={() => signIn(email, password)}
-                            disabled={loading}
-                        >
-                            {loading ? (
-                                <ActivityIndicator size={'large'} color={Colors.white} />
-                            ) : (
-                                <Text
-                                    color={Colors.white}
-                                    size={18}
-                                    weight={700}
-                                >
-                                    Entrar
-                                </Text>
-                            )}
-                        </Button>
-                    </Form>
-                    <ButtonOut
-                        onPress={() => navigation.navigate('LoginUser')}
-                        style={{ alignSelf: 'center' }}
+                        )}
+                    </Button>
+                </Form>
+                <ButtonOut
+                    onPress={() => navigation.navigate('LoginUser')}
+                    style={{ alignSelf: 'center' }}
+                >
+                    <Text
+                        size={14}
+                        color={Colors.primary}
                     >
-                        <Text
-                            size={14}
-                            color={Colors.primary}
-                        >
-                            Entrar como usuário
-                        </Text>
-                    </ButtonOut>
-                    <ButtonOut
-                        onPress={() => navigation.navigate('SellerRegister')}
-                        style={{ alignSelf: 'center' }}
+                        Entrar como usuário
+                    </Text>
+                </ButtonOut>
+                <ButtonOut
+                    onPress={() => navigation.navigate('SellerRegister')}
+                    style={{ alignSelf: 'center' }}
+                >
+                    <Text
+                        size={14}
+                        color={Colors.primary}
                     >
-                        <Text
-                            size={14}
-                            color={Colors.primary}
-                        >
-                            Não possuí conta? Cadastre-se
-                        </Text>
-                    </ButtonOut>
-                </ScrollView>
-            </Container>
+                        Não possuí conta? Cadastre-se
+                    </Text>
+                </ButtonOut>
+            </ScrollView>
         </Container>
     );
 }
