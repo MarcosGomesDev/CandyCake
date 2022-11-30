@@ -45,14 +45,18 @@ const LoginUser: React.FC = () => {
 
         try {
             setLoading(true)
-            const auth = {
-                email,
-                password,
-                name: 'Marcos Gomes'
-            }
-            storeData(auth as UserProps)
-            setLoading(false)
-            setAuth(auth)
+
+            setTimeout(() => {
+                const auth = {
+                    email,
+                    password,
+                    name: 'Marcos Gomes'
+                }
+                storeData(auth as UserProps)
+                setLoading(false)
+                setAuth(auth)
+            }, 3000);
+            
         } catch (error) {
             setLoading(false)
             Alert.alert('credenciais inválidas')
@@ -139,7 +143,7 @@ const LoginUser: React.FC = () => {
                             disabled={loading}
                         >
                             {loading ? (
-                                <ActivityIndicator size={'large'} color={Colors.white} />
+                                <ActivityIndicator size={'small'} color={Colors.white} />
                             ) : (
                                 <Text
                                     color={Colors.white}
